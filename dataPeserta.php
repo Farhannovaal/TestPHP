@@ -20,15 +20,6 @@ session_start();
 <body>
     
 
-<?php
-
-include_once("function/koneksi.php");
-include_once("function/helper.php");
-
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,10 +1,18 @@
 
 <?php
 
+
+session_start();
+
 include_once("function/koneksi.php");
 include_once("function/helper.php");
 
-session_start();
+
+
+if (!isset($_SESSION['id'])) {
+    header("location:".BASE_URL. "login.php"); 
+    exit();
+}
 
     ?>
 
@@ -16,7 +24,9 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/index.css" rel=stylesheet>
     <title> Staff Admin </title>
+
 </head>
 <body>
     
@@ -27,16 +37,22 @@ session_start();
 
 
 
-<form action="<?php echo BASE_URL.'update.php'; ?>" method="POST">
+
+<form action="<?php echo BASE_URL.'update.php'; ?>" method="POST" class="form-admin">
 
 
-            <table>
+         
+
+<input type="text" id="BahanInput" placeholder="Masukkan ID">
+                <button onclick="searchTiket()">Cari</button>
+            <table id="dataTable">
                 <tr class='tab'>
                 <td> TiketID </td>
                 <td> Nama </td>
                 <td> Nomor </td>
                 <td> Email </td>
                 <td>Status</td>
+                <td>Action</td>
                 </tr>
         <?php
                 $query = mysqli_query($koneksi, "SELECT * FROM penonton ORDER BY id ASC");
@@ -77,6 +93,6 @@ session_start();
 
 
 
-
+<script src="edit.js"></script>
 </body>
 </html>
