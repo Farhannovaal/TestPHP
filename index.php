@@ -6,13 +6,6 @@ include_once("function/helper.php");
 
 session_start();
 
-
-if (!isset($_SESSION['admin_id'])) {
-    header("location:".BASE_URL. "login.php");  
-    exit();
-
-}
-
     ?>
 
 
@@ -33,9 +26,11 @@ if (!isset($_SESSION['admin_id'])) {
     <h1 class="mainFont"> Selamat Datang di Halaman Pemesanan Tiket </h1>
 
 
-<div class="form-wrapper">
-        <form action="<?php echo BASE_URL.'dataPeserta.php'; ?>" method="POST">
+<div class="form-wrapper-peserta">
+        <form action="" method="POST">
         <!-- @csrf -->
+
+        <a class="button-staff" href="<?php echo BASE_URL; ?>login.php"> Masuk Sebagai Staff </a>
       <h2> Masukan Data Diri Anda </h2>
         <div class="element-form">
           
@@ -54,6 +49,7 @@ if (!isset($_SESSION['admin_id'])) {
       
         <div class="element-form">
            <button name="button"> Kirim Pesanan </button>
+         
         </div>
 
         </form>
@@ -71,6 +67,7 @@ if (!isset($_SESSION['admin_id'])) {
                         $queryTambah = mysqli_query($koneksi, "INSERT INTO penonton (Nama, Email, Nomor, status) VALUES ('$nama_lengkap', '$email', '$phone', 'aktif')");
                         if ($queryTambah){
                             echo "Data berhasil disimpan";
+                            header("location:".BASE_URL. "dataPeserta.php");
                         
                         } else {
                             echo "Terjadi kesalahan: " . mysqli_error($koneksi);

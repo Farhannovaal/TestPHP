@@ -16,7 +16,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;}
-.form-wrapper {
+.form-wrapper-peserta {
     width:300px;
     margin: 50px;
     padding: 50px;
@@ -27,14 +27,15 @@ body{
     border-radius: 10px;
 }
 
-.form-wrapper form {
+.form-wrapper-peserta form {
     display: flex;
     gap: 30px;
     flex-direction: column;
+    color:white;
     /* text-align: center; */
 }
 
-.form-wrapper .element-form input {
+.form-wrapper-peserta .element-form input {
     border: none;
     padding: 10px;
     border-radius: 5px;
@@ -42,14 +43,46 @@ body{
     font-size: 14px;
 }
 
-label {}
 
-.form-wrapper .element-form label {
+
+.form-wrapper.element-form label {
     color: white;
-    font-weight: BOLD;
+    font-weight: bold;
     FONT-SIZE: 20px;
 }
 
+a.button {
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 400;
+    color: black;
+}
+
+a.button:hover {
+    background-color: grey;
+}
+
+
+
+a.register-link {
+    /* text-decoration: none; */
+    color: white;
+    font-size: 18px;
+}
+a.button-staff {
+    background-color: white;
+    padding: 10px;
+    border-radius: 15px;
+    text-decoration: none;
+    color: black;
+}
+
+a.button-staff:hover{
+    background-color:grey;
+}
 button {
     padding: 10px;
     border-radius: 5px;

@@ -58,6 +58,8 @@ while ($row = mysqli_fetch_assoc($queryData)) {
             <input type="text" name="nama_lengkap" value="<?php echo ($nama_lengkap)  ?>" readonly>
             <input type="text" name="nomor" value="<?php echo ($phone) ?>" readonly>
         </form>
+
+        <a href="<?php echo BASE_URL; ?>index.php" class="button">Close</a>
     </div>
 
 

@@ -48,6 +48,7 @@ if (isset($_POST['login'])) {
                 <input type="text" name="username" class="username" placeholder="Username">
                 <input type="password" name="password" class="password" placeholder="Password">
                 <button type="submit" name="login">Login</button>
+                <a class="register-link "href="<?php echo BASE_URL; ?>register.php"> Belum punya akun ? </a>
             </form>
             <?php
             if (isset($error)) {
