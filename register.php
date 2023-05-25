@@ -8,9 +8,6 @@ session_start();
 
 ?>
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,15 +18,6 @@ session_start();
     <title> Register Staff Account </title>
 </head>
 <body>
-    
-
-
-                
-
-
-
-
-    
         <div class="register-wrapper">
 
             <form action="" method="POST">
@@ -40,9 +28,6 @@ session_start();
             </form>
 
         </div>
-
-
-
                  <?php
                         if (isset($_POST["kirim"])) {
                             $username = $_POST['username'];

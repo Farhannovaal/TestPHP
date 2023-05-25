@@ -35,64 +35,42 @@ if (!isset($_SESSION['id'])) {
 
 <div class="table-wrapper">
 
+        <form action="<?php echo BASE_URL.'update.php'; ?>" method="POST" class="form-admin">
+        <input type="text" id="BahanInput" placeholder="Masukkan ID">
+                        <button onclick="searchTiket()">Cari</button>
+                    <table id="dataTable">
+                        <tr class='tab'>
+                        <td> TiketID </td>
+                        <td> Nama </td>
+                        <td> Nomor </td>
+                        <td> Email </td>
+                        <td>Status</td>
+                        <td>Action</td>
+                        </tr>
+                <?php
+                        $query = mysqli_query($koneksi, "SELECT * FROM penonton ORDER BY id ASC");
+                        while ($row = mysqli_fetch_assoc($query)) {
+                            $ticketId = $row['id'];
+                            $nama_lengkap = $row["Nama"];
+                            $phone = $row["Nomor"];
+                            $email = $row["Email"];
+                            $status = $row['status'];;
 
-
-
-<form action="<?php echo BASE_URL.'update.php'; ?>" method="POST" class="form-admin">
-
-
-         
-
-<input type="text" id="BahanInput" placeholder="Masukkan ID">
-                <button onclick="searchTiket()">Cari</button>
-            <table id="dataTable">
-                <tr class='tab'>
-                <td> TiketID </td>
-                <td> Nama </td>
-                <td> Nomor </td>
-                <td> Email </td>
-                <td>Status</td>
-                <td>Action</td>
-                </tr>
-        <?php
-                $query = mysqli_query($koneksi, "SELECT * FROM penonton ORDER BY id ASC");
-                while ($row = mysqli_fetch_assoc($query)) {
-                    $ticketId = $row['id'];
-                    $nama_lengkap = $row["Nama"];
-                    $phone = $row["Nomor"];
-                    $email = $row["Email"];
-                    $status = $row['status'];;
-
-            echo "<tr class='tab'>
-                    <td>{$ticketId}</td>
-                    <td>{$nama_lengkap}</td>
-                    <td>{$phone}</td>
-                    <td>{$email}</td>
-                    <td>{$status}</td>
-                    <td class='button'>
-                    <a class='tombol-action' href='".BASE_URL."updateData.php?id=$row[id]' data--id='$row[id]'>Update Status</a>   
-                    </td>
-                    </tr>";
-            }
-    ?>
-  </table>
-
- 
+                    echo "<tr class='tab'>
+                            <td>{$ticketId}</td>
+                            <td>{$nama_lengkap}</td>
+                            <td>{$phone}</td>
+                            <td>{$email}</td>
+                            <td>{$status}</td>
+                            <td class='button'>
+                            <a class='tombol-action' href='".BASE_URL."updateData.php?id=$row[id]' data--id='$row[id]'>Update Status</a>   
+                            </td>
+                            </tr>";
+                    }
+            ?>
+                    </table>
     </div>
-
 </form>           
-
-
-
-
-
-
-
-
-
-
-
-
 <script src="edit.js"></script>
 </body>
 </html>
