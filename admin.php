@@ -2,7 +2,7 @@
 <?php
 
 
-session_start();
+
 
 include_once("function/koneksi.php");
 include_once("function/helper.php");
@@ -13,10 +13,9 @@ if(isset($_GET['search'])){
 }
 
 
-
-if (!isset($_SESSION['id'])) {
+session_start();
+if ($_SESSION['username']  == '' ) {
     header("location:".BASE_URL. "login.php"); 
-    exit();
 }
 
     ?>

@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 
 include_once("function/helper.php");
 include_once("function/koneksi.php");
@@ -17,8 +17,8 @@ if (isset($_POST['login'])) {
         $query = mysqli_query($koneksi, "SELECT * FROM staff WHERE Username ='$username' AND password_col ='$password'");
     
         if (mysqli_num_rows($query) > 0) {
-            $id = mysqli_fetch_assoc($query);
-            $_SESSION['id'] = $id['id'];
+            session_start();
+            $_SESSION['username'] = $username;
             header("location:".BASE_URL. "admin.php");
             exit();
         } else {
