@@ -17,8 +17,8 @@ if (isset($_POST['login'])) {
         $query = mysqli_query($koneksi, "SELECT * FROM staff WHERE Username ='$username' AND password_col ='$password'");
     
         if (mysqli_num_rows($query) > 0) {
-            $admin = mysqli_fetch_assoc($query);
-            $_SESSION['admin_id'] = $admin['admin_id'];
+            $id = mysqli_fetch_assoc($query);
+            $_SESSION['id'] = $id['id'];
             header("location:".BASE_URL. "admin.php");
             exit();
         } else {

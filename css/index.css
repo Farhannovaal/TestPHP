@@ -91,6 +91,9 @@ a.home-index {
     text-align: center;
     text-decoration: none;
     color: black;
+    position: absolute;
+    left: 70%;
+    top: 6%;
 }
 
 a.home-index:hover {
@@ -818,6 +821,17 @@ table .tab td.verif-div {
     border-radius: 5px;
 }
 
+form.search-form {
+    margin: 20px;
+}
+
+form.search-form input {
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+}
+
 
 
 .form-admin .tab td.button {
@@ -853,4 +867,10 @@ table tr.tab td {
     background-color: white;
     border: none;
     color: black;
+}
+
+form.search-form label {
+    font-weight: 600;
+    color: white;
+    font-size: 18px;
 }

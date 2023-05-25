@@ -8,6 +8,11 @@ include_once("function/koneksi.php");
 include_once("function/helper.php");
 
 
+if(isset($_GET['search'])){
+    $cari = $_GET['search'];
+}
+
+
 
 if (!isset($_SESSION['id'])) {
     header("location:".BASE_URL. "login.php"); 
@@ -31,32 +36,56 @@ if (!isset($_SESSION['id'])) {
 <body>
     
 
+
+<a class="home-index" href="<?php echo BASE_URL; ?>index.php"> Kembali Ke Home </a>
+
+
+
+
+<form action="admin.php" method="GET" class="search-form">
+    <label> Cari </label>
+        <input type="text" id="search" name='search' placeholder="Masukkan ID">                    
+</form>
+
 <div class="table-wrapper">
 
         <form action="<?php echo BASE_URL.'update.php'; ?>" method="POST" class="form-admin">
 
-        <a class="home-index" href="<?php echo BASE_URL; ?>index.php"> Kembali Ke Home </a>
-        <input type="text" id="BahanInput" placeholder="Masukkan ID">
-                        <button onclick="searchTiket()">Cari</button>
-                    <table id="dataTable">
-                        <tr class='tab'>
-                        <td> TiketID </td>
-                        <td> Nama </td>
-                        <td> Nomor </td>
-                        <td> Email </td>
-                        <td>Status</td>
-                        <td>Action</td>
-                        </tr>
+                    <table>
+                        <thead>
+                            <tr class='tab'>
+                                <th> TiketID </th>
+                                <th> Nama </th>
+                                <th> Nomor </th>
+                                <th> Email </th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        <thead>
                 <?php
-                        $query = mysqli_query($koneksi, "SELECT * FROM penonton ORDER BY id ASC");
-                        while ($row = mysqli_fetch_assoc($query)) {
+
+
+                        if(isset($_GET['search'])){
+
+                                $cari = $_GET['search'];
+                                $tampil = mysqli_query($koneksi, " SELECT * FROM penonton where id like '%".$cari."%'");
+
+                        }else {
+                            $tampil = mysqli_query($koneksi, "SELECT * FROM penonton ORDER BY id ASC");
+                        }
+
+                        while ($row=mysqli_fetch_assoc($tampil)){ 
+
                             $ticketId = $row['id'];
                             $nama_lengkap = $row["Nama"];
                             $phone = $row["Nomor"];
                             $email = $row["Email"];
                             $status = $row['status'];;
 
-                    echo "<tr class='tab'>
+                     
+                    echo "<tbody>
+                    
+                        <tr class='tab'>
                             <td>{$ticketId}</td>
                             <td>{$nama_lengkap}</td>
                             <td>{$phone}</td>
@@ -65,12 +94,16 @@ if (!isset($_SESSION['id'])) {
                             <td class='button'>
                             <a class='tombol-action' href='".BASE_URL."updateData.php?id=$row[id]' data--id='$row[id]'>Update Status</a>   
                             </td>
-                            </tr>";
+                        </tr>
+                        
+                        <tbody>";
+
+
                     }
+                
             ?>
                     </table>
     </div>
 </form>           
-<script src="edit.js"></script>
 </body>
 </html>
