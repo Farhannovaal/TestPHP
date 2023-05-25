@@ -30,12 +30,12 @@ if (!isset($_SESSION['id'])) {
 </head>
 <body>
     
-ad
-
 
 <div class="table-wrapper">
 
         <form action="<?php echo BASE_URL.'update.php'; ?>" method="POST" class="form-admin">
+
+        <a class="home-index" href="<?php echo BASE_URL; ?>index.php"> Kembali Ke Home </a>
         <input type="text" id="BahanInput" placeholder="Masukkan ID">
                         <button onclick="searchTiket()">Cari</button>
                     <table id="dataTable">

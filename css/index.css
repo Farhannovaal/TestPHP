@@ -83,6 +83,19 @@ a.button-staff {
 a.button-staff:hover{
     background-color:grey;
 }
+a.home-index {
+    background-color: white;
+    padding: 10px;
+    margin: 50px;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+}
+
+a.home-index:hover {
+    background-color: grey;
+}
 button {
     padding: 10px;
     border-radius: 5px;
