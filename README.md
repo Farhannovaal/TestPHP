@@ -1,3 +1,3 @@
 # CRUD Sistem With PHP Language 
 
-If will update with framework Laravel
+its will be update with framework Laravel
